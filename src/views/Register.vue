@@ -20,7 +20,7 @@
           label="Password"
           v-model="user.password"
           prepend-icon="mdi-lock"
-          :append-icon="showPassword ? 'mid-eye' : 'mdi-eye-off'"
+          :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
           @click:append="showPassword = !showPassword"
           :rules="passwordRules"
           required
@@ -113,7 +113,7 @@ export default {
     async register() {
       try {
         await this.$store.dispatch('user/register', this.user)
-        await this.$router.push({ name: 'product' })
+        await this.$router.push({ name: 'products' })
       } catch (err) {
         console.log(err)
       }

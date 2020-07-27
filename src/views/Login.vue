@@ -16,13 +16,13 @@
           label="Password"
           v-model="password"
           prepend-icon="mdi-lock"
-          :append-icon="showPassword ? 'mid-eye' : 'mdi-eye-off'"
+          :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
           @click:append="showPassword = !showPassword"
           :rules="passwordRules"
           required
         ></v-text-field>
         <v-btn type="submit" @click="validateForm">Login</v-btn>
-        <p class='pt-3'>
+        <p class="pt-3">
           You don't have an account? Click
           <router-link :to="{ name: 'register' }">
             here.
@@ -69,7 +69,7 @@ export default {
           email: this.email,
           password: this.password
         })
-        await this.$router.push({ name: 'product' })
+        await this.$router.push({ name: 'products' })
       } catch (err) {
         console.log(err)
       }

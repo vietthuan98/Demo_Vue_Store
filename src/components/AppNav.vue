@@ -14,8 +14,13 @@
     </v-btn>
     <v-btn v-if="!loggedIn" text rounded to="/login">Log in</v-btn>
     <v-btn v-if="!loggedIn" text rounded to="/register">Register</v-btn>
-    <v-btn v-if="loggedIn" text rounded @click="logout">Log out</v-btn>
-
+    <v-btn v-if="loggedIn" text rounded to="/cart"
+      >Cart({{ cartLength }})</v-btn
+    >
+    <v-btn v-if="loggedIn" text rounded @click="logout" class="reddd">
+      <span class="testitalic">Log out</span>
+      <v-icon right>mdi-exit-to-app</v-icon>
+    </v-btn>
   </v-app-bar>
 </template>
 
@@ -34,9 +39,12 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('user', ['loggedIn'])
+    ...mapGetters('user', ['loggedIn']),
+    ...mapGetters('product', ['cartLength'])
   }
 }
 </script>
 
-<style></style>
+<style>
+
+</style>

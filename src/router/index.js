@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import store from '@/store'
 
 Vue.use(VueRouter);
 
@@ -20,9 +21,36 @@ const routes = [
     component: () => import('../views/Register.vue')
   },
   {
-    path: '/product',
-    name: 'product',
+    path: '/products',
+    name: 'products',
     component: () => import('../views/Product.vue'),
+    meta: {
+      requiresAuth: true
+    },
+    props: true
+  },
+  {
+    path: '/products/:id',
+    name: 'product-show',
+    component: () => import('../views/ProductShow.vue'),
+    meta: {
+      requiresAuth: true
+    },
+    props: true,
+    async beforeEnter(to, from, next) {
+      try {
+        const product = await store.dispatch('product/getProduct', to.params.id)
+        to.params.product = product
+        next()
+      } catch (err) {
+        console.log('Product/:id beforeEnter: ', err)
+      }
+    }
+  },
+  {
+    path: '/cart',
+    name: 'cart',
+    component: () => import('../views/Cart.vue'),
     meta: {
       requiresAuth: true
     }

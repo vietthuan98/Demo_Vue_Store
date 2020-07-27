@@ -13,7 +13,8 @@ export const mutations = {
     axios.defaults.headers.common['Authorization'] = `Bear ${userData.accessToken}`
   },
   DELETE_DATA_USER() {
-    localStorage.removeItem('user'),
+    localStorage.removeItem('user')
+    localStorage.removeItem('cart')
     location.reload()
   }
 }

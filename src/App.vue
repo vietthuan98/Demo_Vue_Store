@@ -2,7 +2,7 @@
   <v-app>
     <AppNav :links="links"/>
     <v-main>
-      <router-view></router-view>
+      <router-view :key="$route.fullPath"></router-view>
     </v-main>
     <AppFooter :links="links"/>
   </v-app>
@@ -21,7 +21,7 @@ export default {
       },
       {
         label: 'Product',
-        url: '/product'
+        url: '/products'
       }
     ]
   }),

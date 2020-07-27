@@ -20,5 +20,8 @@ npm run build
 npm run lint
 ```
 
+### json-server auth
+json-server db.json -m ./node_modules/json-server-auth
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
